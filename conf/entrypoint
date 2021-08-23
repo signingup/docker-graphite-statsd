@@ -3,6 +3,11 @@
 ## Inspired from the script found at
 ##   https://sanjeevan.co.uk/blog/running-services-inside-a-container-using-runit-and-alpine-linux/
 
+if [ -d /mnt/proc ]; then
+  umount /proc
+  mount -o bind /mnt/proc /proc
+fi
+
 shutdown() {
   echo "shutting down container"
 
